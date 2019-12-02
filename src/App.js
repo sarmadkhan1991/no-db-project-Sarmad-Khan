@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import { IoIosMusicalNote } from 'react-icons/io'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor (props) {
+    super(props) 
+    this.state = {
+      album: []
+    }
+    this.getAllSongs = this.getAllSongs.bind(this);
+  }
+
+  componentDidMount() {
+    this.getAllSongs();
+  }
+
+
+  getAllSongs(){
+    axios.get('/api/album/songs').then(res => {
+      this.setState( {  
+        album: res.data
+      } )
+    })
+  }
+
+  render () {
+    const { album } = this.state;
+    const mappedSongs = album.map(song => {
+      return (
+        <div key={song.id}>
+          <div>{song.name}</div>
+          <div>{song.lyrics}</div>
+          <div>{song.deadline}</div>
+        </div>
+      )
+    })
+    return (
+      <div className="App">
+          {IoIosMusicalNote}:{mappedSongs}
+      </div>
+    );
+  }
 }
 
 export default App;
