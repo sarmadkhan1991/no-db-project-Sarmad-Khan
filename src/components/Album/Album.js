@@ -2,7 +2,7 @@ import React from 'react';
 import './album.css';
 import { MdDelete } from 'react-icons/md';
 import { TiEdit } from 'react-icons/ti';
-import { IoIosMusicalNotes } from 'react-icons/io';
+import { IoIosMusicalNotes, IoIosSave } from 'react-icons/io';
 
 class Album extends React.Component {
     constructor (props) {
@@ -82,7 +82,7 @@ class Album extends React.Component {
                         <td>
                             <button onClick={() => {
                                                     this.props.editSong(id)
-                                                    this.setState({edit: false})}}><TiEdit/></button>
+                                                    this.setState({edit: false})}}><IoIosSave/></button>
                         </td>
                     </tr>
                 )
@@ -96,25 +96,15 @@ class Album extends React.Component {
                     <tr key={id}>
                         <td><IoIosMusicalNotes/></td>
                         <td>{albumName}</td>
-                        <td><div className={(lyrics, composition, preProduction, postProduction) => {
-                            if(lyrics === 'Completed' && composition === 'Completed' && preProduction === 'Completed' && postProduction === 'Completed'){
-                                return 'green';
-                            }else{
-                                return 'yellow'
-                            }
-                        }}></div></td>
+                        <td><div className={lyrics === 'Completed' && composition === 'Completed' && preProduction === 'Completed' && postProduction === 'Completed' ? 'green': 'yellow'}></div></td>
                         <td>{songName}</td>
-                        <td><div className={(lyrics) => {
-                            if (lyrics === 'Completed'){
-                                return 'green'
-                            }
-                        }}></div></td>
+                        <td><div className={lyrics === "Completed" ? "green" : lyrics === "In Progress" ? "yellow" : "red"}></div></td>
                         <td>{lyrics}</td>
-                        <td><div className='status'></div></td>
+                        <td><div className={composition === "Completed" ? "green" : composition === "In Progress" ? "yellow" : "red"}></div></td>
                         <td>{composition}</td>
-                        <td><div className='status'></div></td>
+                        <td><div className={preProduction === "Completed" ? "green" : preProduction === "In Progress" ? "yellow" : "red"}></div></td>
                         <td>{preProduction}</td>
-                        <td><div className='status'></div></td>
+                        <td><div className={postProduction === "Completed" ? "green" : postProduction === "In Progress" ? "yellow" : "red"}></div></td>
                         <td>{postProduction}</td>
                         <td>{deadline}</td>
                         <td>

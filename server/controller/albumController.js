@@ -45,7 +45,6 @@ module.exports = {
         res.status(200).send(album);
     },
     updateSong: (req, res, next) => {
-        console.log(req.body)
         const { id } = req.params
         const { songName, albumName, lyrics, composition, preProduction, postProduction, deadline } = req.body;
         const index = album.findIndex(song => {

@@ -18,23 +18,47 @@ export default function SongForm (props) {
             </div>
             <div>
                 Lyrics: <input name='lyrics' 
-                                  onChange={event => props.changeHandler(event.target.name, event.target.value)}
-                                  value={props.lyrics}/>
+                                   list='lyrics'
+                                   placeholder={props.lyrics}
+                                   onChange={(event) => props.changeHandler(event.target.name, event.target.value)}/>
+                                    <datalist id='lyrics' >
+                                        <option value='Not Started' />
+                                        <option value='In Progress' />
+                                        <option value='Completed' />
+                                    </datalist>
             </div>
             <div>
                 Composition: <input name='composition' 
-                                  onChange={event => props.changeHandler(event.target.name, event.target.value)}
-                                  value={props.composition}/>
+                                   list='composition' 
+                                   placeholder={props.composition}
+                                   onChange={(event) => props.changeHandler(event.target.name, event.target.value)}/>
+                                    <datalist id='composition' >
+                                        <option value='Not Started' />
+                                        <option value='In Progress' />
+                                        <option value='Completed' />
+                                    </datalist>
             </div>
             <div>
                 PreProduction: <input name='preProduction' 
-                                  onChange={event => props.changeHandler(event.target.name, event.target.value)}
-                                  value={props.preProduction}/>
+                                   list='preProduction' 
+                                   placeholder={props.preProduction}
+                                   onChange={(event) => props.changeHandler(event.target.name, event.target.value)}/>
+                                    <datalist id='preProduction' >
+                                        <option value='Not Started' />
+                                        <option value='In Progress' />
+                                        <option value='Completed' />
+                                    </datalist>
             </div>
             <div>
                 PostProduction: <input name='postProduction' 
-                                  onChange={event => props.changeHandler(event.target.name, event.target.value)}
-                                  value={props.postProduction}/>
+                                   list='postProduction' 
+                                   placeholder={props.postProduction}
+                                   onChange={(event) => props.changeHandler(event.target.name, event.target.value)}/>
+                                    <datalist id='postProduction' >
+                                        <option value='Not Started' />
+                                        <option value='In Progress' />
+                                        <option value='Completed' />
+                                    </datalist>
             </div>
             <div>
                 Deadline: <input name='deadline' 
