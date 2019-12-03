@@ -1,12 +1,24 @@
 [
     {
     "id": 1,
-    "name": "This Feeling",
+    "albumName": "Jasmine",
+    "songName": "This Feeling",
     "lyrics": "Completed",
     "composition": "Not Started",
     "preProduction": "Not Started",
     "postProduction": "Not Started",
-    "status": "In Progress",
-    "deadline": "1/1/2020"
+    "deadline": "1/1/2020",
+    "edit": ""
+    },
+    {
+    "id": 2,
+    "albumName": "Jasmine",
+    "songName": "Memories Of My Dreams",
+    "lyrics": "Completed",
+    "composition": "Not Started",
+    "preProduction": "Not Started",
+    "postProduction": "Not Started",
+    "deadline": "1/1/2020",
+    "edit": ""
     }
 ]

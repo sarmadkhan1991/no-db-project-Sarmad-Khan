@@ -1,5 +1,5 @@
 const album = require("../data.json");
-let id = 2;
+let id = 3;
 
 
 
@@ -20,22 +20,23 @@ module.exports = {
     },
     postSong: (req, res, next) => {
         const {
-            name,
+            albumName,
+            songName,
             lyrics,
             composition,
             preProduction,
             postProduction,
-            status,
             deadline
         } = req.body;
+        console.log(req.body);
         const song = {
             id, 
-            name,
+            albumName,
+            songName,
             lyrics,
             composition,
             preProduction,
             postProduction,
-            status,
             deadline
         }
         album.push(song);
@@ -44,19 +45,20 @@ module.exports = {
         res.status(200).send(album);
     },
     updateSong: (req, res, next) => {
+        console.log(req.body)
         const { id } = req.params
-        const { name, lyrics, composition, preProduction, postProduction, status, deadline } = req.body;
+        const { songName, albumName, lyrics, composition, preProduction, postProduction, deadline } = req.body;
         const index = album.findIndex(song => {
             return song.id === +id;
         });
 
         if (index !== -1) {
-            album[index].name = name || album[index].name;
+            album[index].songName = songName || album[index].songName;
             album[index].lyrics = lyrics || album[index].lyrics;
             album[index].composition = composition || album[index].composition;
             album[index].preProduction = preProduction || album[index].preProduction;
             album[index].postProduction = postProduction || album[index].postProduction;
-            album[index].status = status || album[index].status;
+            album[index].albumName = albumName || album[index].albumName;
             album[index].deadline = deadline || album[index].deadline;
 
             res.status(200).send(album)
